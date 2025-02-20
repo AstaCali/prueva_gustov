@@ -1,0 +1,104 @@
+<div class="row">
+    <!-- <div class="col-lg-3">
+        <div class="card bg-info">
+            <div class="card-body">
+                <div class="d-flex no-block">
+                    <div class="m-r-20 align-self-center"><img src="../assets/images/icon/income-w.png" alt="Income"></div>
+                    <div class="align-self-center">
+                        <h6 class="text-white m-t-10 m-b-0">Total Income</h6>
+                        <h2 class="m-t-0 text-white">953,000</h2></div>
+                </div>
+            </div>
+        </div>
+    </div> -->
+    <div class="col-lg-4">
+        <div class="card bg-success">
+            <div class="card-body">
+                <div class="d-flex no-block">
+                    <div class="m-r-20 align-self-center"><img src="../assets/images/icon/expense-w.png" alt="Income"></div>
+                    <div class="align-self-center">
+                        <h6 class="text-white m-t-10 m-b-0">Roles</h6>
+                        <h2 class="m-t-0 text-white">{{totalRole}}</h2></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="card bg-info">
+            <div class="card-body">
+                <div class="d-flex no-block">
+                    <div class="m-r-20 align-self-center"><img src="../assets/images/icon/expense-w.png" alt="Income"></div>
+                    <div class="align-self-center">
+                        <h6 class="text-white m-t-10 m-b-0">Permisos</h6>
+                        <h2 class="m-t-0 text-white">0</h2></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="card bg-danger">
+            <div class="card-body">
+                <div class="d-flex no-block">
+                    <div class="m-r-20 align-self-center"><img src="../assets/images/icon/staff-w.png" alt="Income"></div>
+                    <div class="align-self-center">
+                        <h6 class="text-white m-t-10 m-b-0">Venta del dia realizada</h6>
+                        <h2 class="m-t-0 text-white">{{totalVentass}}</h2></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+
+                <div class="row">
+                    <div class="col-8">
+                        <h4 class="card-title">Solicitudes de Permiso(NO requerido aun)</h4> 
+                    </div>
+<!-- 
+                    <div class="col">
+                        <div class="text-right">
+                            <a class="btn btn-primary">
+                                <i class="fa fa-hospital-o"></i> 
+                                Crear Trabajador
+                            </a>
+                        </div>
+                    </div> -->
+
+                </div>
+                
+                <!-- <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Nombre Completo</th>
+                                <th>Tipo de Ausencia</th>
+                                <th>Fecha de Solicitud</th>
+                                <th>Estado</th>
+                                <th class="text-nowrap">Accion</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let reservations of reservation ">
+                
+                                <td>{{reservations.name}} {{reservations.last_name}}</td>
+                                <td>{{reservations.reason}}</td>
+                                <td>{{reservations.solicited_date}}</td>
+                                <td>{{reservations.status}}</td>
+                                <td>
+                                    <button [routerLink]="['/dashboard','reservation', reservations.id ]" type="button" class="btn btn-info">Ver Detalles</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <button class="btn btn-secondary">Anterior</button>
+                &nbsp;
+                <button class="btn btn-secondary">Siguiente</button> -->
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,6 @@
+.menu-img {
+    width: 150px; /* Ajusta el tamaño de la imagen */
+    height: 100px;
+    object-fit: cover; /* Evita deformaciones */
+    margin-right: 10px;
+}

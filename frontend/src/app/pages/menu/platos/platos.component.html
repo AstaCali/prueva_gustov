@@ -1,0 +1,111 @@
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+
+                <input type="text"
+                        class="form-control"
+                        placeholder="Buscar Menu......"
+                        (keyup)="CargarPlato( txtTermino.value )"
+                        #txtTermino
+                />
+            </div>
+        </div>
+    </div>
+</div> 
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+
+                <div class="row">
+                    <div class="col-8">
+                        <h4 class="card-title">Total de platos ({{ totalPlato}}) - {{ desde }}</h4> 
+                        <h4 class="card-title">MENU</h4> 
+                    </div>
+                    
+                    <div class="col">
+                        <div class="text-right">
+                            <a class="btn btn-info"
+                                routerLink="/dashboard/menus/nuevo">
+                                <i class="fa fa-hospital-o"></i> 
+                                Nuevo Menu
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+                
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th class="text-nowrap">Nombre </th>
+                                <th class="text-nowrap">Precio</th>
+                                <th class="text-nowrap">Estado</th>
+                                <th>Imagen</th>
+                                <th>Informacion</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let plato of platoArray">
+                                <td>{{plato.nombre}}</td>
+                                <td>{{plato.precio}}</td>
+                                <!-- <td>{{plato.estado}}</td> -->
+                                <td>
+                                    <select class="form-control"
+                                        [(ngModel)]="plato.estado"
+                                        (change)="cambiarStado(plato)"
+                                        [ngClass]="plato.estado ? 'activo' : 'inactivo'"
+                                    >
+                                        <option [ngValue]="true">activo</option>
+                                        <option [ngValue]="false">inactivo</option>
+                                    </select>
+                                </td>
+                               
+                                <td><img [src]="url + (plato.imagen.split('/').pop())" alt="" width="60px"></td>
+                                <td class="text-nowrap">
+                                    <a [routerLink]="['/dashboard','menus', plato.id ]"
+                                        data-toggle="tooltip" 
+                                        data-original-title="Editar">
+                                        <i class="fa fa-pencil text-inverse m-r-10"></i> 
+                                    </a>
+                                    <a class="cursor"
+                                        data-toggle="tooltip"
+                                        data-original-title="Borrar"
+                                        (click)="borrarPlato(plato)"
+                                        > 
+                                        <i class="fa fa-close text-danger"></i> 
+                                    </a>
+                                </td>
+                                <!-- <td class="text-nowrap">
+                                    <a>
+                                        <i class="cursor">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle-fill" viewBox="0 0 16 16">
+                                                <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2"/>
+                                            </svg>
+                                        </i>
+                                    </a>
+                                    &nbsp;
+                                    <a (click)="onImprimir(vacations)">
+                                        <i class="cursor">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-printer-fill" viewBox="0 0 16 16">
+                                                <path d="M5 1a2 2 0 0 0-2 2v1h10V3a2 2 0 0 0-2-2zm6 8H5a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1"/>
+                                                <path d="M0 7a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2h-1v-2a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v2H2a2 2 0 0 1-2-2zm2.5 1a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1"/>
+                                            </svg>
+                                        </i>
+                                    </a>
+                                </td> -->
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <button (click)="cambiarPagina(-6)" class="btn btn-secondary">Anterior</button>
+                &nbsp;
+                <button (click)="cambiarPagina(6)" class="btn btn-secondary">Siguiente</button>
+            </div>
+        </div>
+    </div>
+</div>

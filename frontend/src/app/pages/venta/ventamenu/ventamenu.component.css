@@ -1,0 +1,32 @@
+.scrollable-content {
+    max-height: 490px; /* Ajusta la altura máxima según sea necesario */
+    overflow-y: auto;
+}
+
+.green-icon {
+  color: green; /* Cambia el color a verde */
+}
+
+.red-icon {
+  color: red; /* Cambia el color a rojo */
+}
+/* --------------- */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.form-container {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}

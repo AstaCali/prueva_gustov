@@ -1,0 +1,181 @@
+<!-- <div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h4>Tu Carrito en A GOOD TASTE</h4>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Cantidad</th>
+                            <th>Precio</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Pizza Mozzarella</td>
+                            <td>
+                                <button class="btn btn-danger btn-sm">-</button>
+                                1
+                                <button class="btn btn-success btn-sm">+</button>
+                            </td>
+                            <td>$140.00</td>
+                        </tr>
+                        <tr>
+                            <td>Coca Cola 500ml</td>
+                            <td>
+                                <button class="btn btn-danger btn-sm">-</button>
+                                1
+                                <button class="btn btn-success btn-sm">+</button>
+                            </td>
+                            <td>$30.00</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <h5>Total: $153.00</h5>
+                <button class="btn btn-success">CONFIRMAR</button>
+                <button class="btn btn-danger">LIMPIAR</button>
+                <button class="btn btn-secondary">CERRAR</button>
+                
+            </div>
+        </div>
+    </div>
+</div> 
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="col-md-4" *ngFor="let item of platoArray">
+                    <img [src]="url + (item.imagen.split('/').pop())" class="img-fluid rounded" alt="Pizza Mozzarella">
+                    <h3 class="mt-3">Pizza Mozzarella</h3>
+                    <p><strong>Pizzas</strong></p>
+                    <p>Tiempo estimado: 20 minutos</p>
+                    <p><strong>Precio:</strong> $140</p>
+                    <button class="btn btn-primary">Descripción</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>  -->
+
+<!-- <div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+
+                <input type="text"
+                        class="form-control"
+                        placeholder="Buscar Menu......"
+                        
+                />
+            </div>
+        </div>
+    </div>
+</div>  -->
+
+<div class="container">
+    <div class="row">
+        <!-- Menú de Platos (Izquierda) -->
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Menu ({{ totalPlato}}) - {{ desde }}</h4>
+                    <input type="text"
+                        class="form-control"
+                        placeholder="Buscar Menu......"
+                        (keyup)="CargarPlato( txtTermino.value )"
+                        #txtTermino
+                    /> 
+                    <div class="row">
+                        <!-- <div class="col-md-12" *ngFor="let item of platoArray">
+                            <div class="card mb-3 p-2 shadow-sm d-flex flex-row align-items-center"> 
+                                <img [src]="url + (item.imagen.split('/').pop())" class="img-thumbnail menu-img" alt="{{ item.nombre }}">
+                                <div class="p-2">
+                                    <h5 class="mt-2">{{ item.nombre }}</h5>
+                                    <p class="mb-1"><strong>{{ item.categoria }}</strong></p>
+                                    <p class="mb-1">Tiempo: {{ item.tiempo }} min</p>
+                                    <p class="mb-1"><strong>Precio:</strong> ${{ item.precio }}</p>
+                                    <button class="btn btn-sm btn-primary">Descripción</button>
+                                </div>
+                            </div>
+                        </div> -->
+                        
+                        <div class="col-md-6" *ngFor="let item of platoArray">
+                            <div class="card mb-3 p-2 shadow-sm d-flex flex-column align-items-center">
+                                <img [src]="url + (item.imagen.split('/').pop())" class="img-thumbnail menu-img" alt="{{ item.nombre }}">
+                                <div class="p-2 text-center">
+                                    <h5 class="mt-2">{{ item.nombre }}</h5>
+                                    <!-- <p class="mb-1"><strong>{{ item.categoria }}</strong></p>
+                                    <p class="mb-1">Tiempo: {{ item.tiempo }} min</p> -->
+                                    <p class="mb-1"><strong>Precio:</strong> Bs.{{ item.precio }}</p>
+                                    <!-- <button class="btn btn-sm btn-primary">Añadir carrito</button> -->
+                                    <button class="btn btn-sm btn-primary" (click)="agregarAlCarrito(item)">Añadir carrito</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button (click)="cambiarPagina(-6)" class="btn btn-secondary">Anterior</button>
+                    &nbsp;
+                    <button (click)="cambiarPagina(6)" class="btn btn-secondary">Siguiente</button>
+                    </div>
+            </div>
+        </div>
+
+        <!-- Carrito de Compras (Derecha) -->
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h4>Carrito Venta de menu Gustov</h4>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Cantidad</th>
+                                <th>Precio</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of carrito">
+                                <td>{{ item.nombre }}</td>
+                                <td>
+                                    <button class="btn btn-danger btn-sm" (click)="disminuirCantidad(item)">-</button>
+                                    {{ item.cantidad }}
+                                    <button class="btn btn-success btn-sm" (click)="aumentarCantidad(item)">+</button>
+                                </td>
+                                <td>Bs.{{ item.precio * item.cantidad }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <!-- <h5>Total: ${{ calcularTotal() }}</h5> -->
+                    <h5>Total: Bs.{{ total }}</h5>
+                    
+                    <!-- <button class="btn btn-secondary">CERRAR</button> -->
+                    <div class="d-flex justify-content-center mt-3">
+                        <form 
+                            [formGroup]="ventaForm" 
+                            (submit)="guardarVenta()"
+                        >
+                            <!-- Campos ocultos para enviar el carrito y el total -->
+                            <!-- <input type="hidden" name="carrito" [value]="carrito | json">
+                            <input type="hidden" name="total" [value]="total"
+                                formControlName="nombre"
+                            > -->
+                            <!-- <input type="hidden" name="carrito" [value]="carrito | json">
+                            <input type="hidden" name="total" [value]="total" formControlName="total"> -->
+                            <input type="hidden" formControlName="carrito" [value]="carrito | json">
+                            <input type="hidden" formControlName="total" [value]="total">
+        
+                            <!-- <button class="btn btn-success mx-2" type="submit">CONFIRMAR</button> -->
+                            <button type="submit" class="btn btn-success mx-2"
+                                                [disabled]="ventaForm.invalid" >CONFIRMAR
+                            </button>
+                            <button class="btn btn-danger mx-2" type="button" (click)="limpiarCarrito()">LIMPIAR</button>
+                            <button class="btn btn-primary mx-2" type="button" (click)="volverVentaLista()">LISTA VENTA</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

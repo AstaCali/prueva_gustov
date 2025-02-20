@@ -1,0 +1,135 @@
+<div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">Reporte de Ventas de pago</h4>
+
+          <div class="dt-buttons">
+            <!-- <a class="dt-button buttons-copy buttons-html5 cursor"
+                (click)="fechaActual()"
+              [class.morado]="currentDate"
+              tabindex="0" aria-controls="example23"><span>Hoy</span>
+            </a>
+            <a class="dt-button buttons-csv buttons-html5 cursor"
+              (click)="actualMes()"
+              [class.morado]="mes"
+              tabindex="0" aria-controls="example23"><span>Este Mes</span>
+            </a> -->
+
+            <a class="dt-button buttons-print" tabindex="0" aria-controls="example23"
+              (click)="onImprimir()"
+            >imprimir reporte
+              <span><i class="mdi mdi-fax ml-2 avatar cursor"></i></span>
+            </a>
+            <!-- <div class="form-group row">
+               
+                <label for="example-month-input" class="col-sm-2 col-form-label">Fecha Inicio*</label>
+                <div class="col-sm-4">
+                    <input class="form-control" type="date" id="example-month-input"
+                       
+                        (change)="cambiarFehaInicio($event)">
+                </div>
+        
+                <label for="example-date-input" class="col-sm-2 col-form-label">Fecha Final*</label>
+                <div class="col-sm-4">
+                    <input class="form-control" type="date" id="example-date-input"
+                        [(ngModel)]="fechaFinal"
+                        (change)="cambiarFechaFinal($event)">
+                </div>
+            </div> -->
+          </div>
+          
+          <div id="example23_filter" class="dataTables_filter">
+            <label>
+                Fecha Inicio
+                <input class="" type="date" id="example-month-input" aria-controls="example23"        
+                  [(ngModel)]="fehcaInicio"              
+                    (change)="cambiarFehaInicio($event)"
+                >
+            </label>
+          </div>
+                   
+          <div id="example23_filter" class="dataTables_filter">
+            <label>
+                <i class="fa fa-close text-danger" (click)="eliminarVentaRep()"></i>
+              <input type="search" class="" placeholder="Filtro de Menu" aria-controls="example23"
+                list="datalistPlatos"
+                id="exampleDataListPlato"
+                (input)="onInputPlatos($event)"
+              >
+            </label>
+            <datalist id="datalistPlatos">
+              <option *ngFor="let plato of platoVentDetArray" [value]="plato.nombre">
+            </datalist>
+          </div>
+          <!-- <hr> -->
+          <div class="table-responsive m-t-40">
+            <div id="example23_wrapper" class="dataTables_wrapper">
+                <h6 class="card-subtitle">Total: {{totalVentaPlato}} &amp; Desde: {{desde}}</h6>
+              <!-- <h6 class="card-subtitle">Periodo: {{ titulo_fecha }} &amp; Total:({{ totalReportePago }}) - {{ desde }}</h6> -->
+              <table id="example23" class="display nowrap table table-hover table-striped table-bordered dataTable" cellspacing="0" width="100%" role="grid" aria-describedby="example23_info" style="width: 100%;">
+                <thead>
+                  <tr role="row">
+                    <th
+                        aria-label="Name: activate to sort column descending"
+                        style="width: 16px;"
+                    >
+                    #</th>
+                    <!-- <th aria-label="Position: activate to sort column ascending" style="width: 239px;">
+                    Paciente</th> -->
+                    <th aria-label="Office: activate to sort column ascending" style="width: 118px;">
+                    Fecha</th>
+                    <th aria-label="Office: activate to sort column ascending" style="width: 118px;">
+                    Plato</th>
+                    <th aria-label="Age: activate to sort column ascending" style="width: 56px;">
+                    Cantidad</th>
+                      <th aria-label="Age: activate to sort column ascending" style="width: 56px;">
+                    Subtotal</th>
+                  </tr>
+                </thead>
+                <!-- <tfoot>
+                  <tr>
+                    <th rowspan="1" colspan="1">#</th>
+                    <th rowspan="1" colspan="1">Paciente</th>
+                    <th rowspan="1" colspan="1">Fecha</th>
+                    <th rowspan="1" colspan="1">Tratamiento</th>
+                    <th rowspan="1" colspan="1">Tipo de Pago</th>
+                    <th rowspan="1" colspan="1">Precio Final</th>
+                    <th rowspan="1" colspan="1">A cuenta</th>
+                    <th rowspan="1" colspan="1">Pagos Bs.</th>
+                    <th rowspan="1" colspan="1">Saldo</th>
+                  </tr>
+                </tfoot> -->
+                <tbody>
+  
+                  <!-- <tr role="row" class="odd" *ngFor="let reppago of reportePagosArray; let i = index"> -->
+                    <tr role="row" class="odd" *ngFor="let reppago of reporteVentDetArray; let i = index">
+                        <td class="sorting_1">{{ i + 1 }}</td>
+                        <!-- <td>{{ reppago.Quote_detail.Quotation.Person.name }} {{reppago.Quote_detail.Quotation.Person.last_name}}</td> -->
+                        <td>{{ reppago.fecha | date:'yyyy-MM-dd'}}</td>
+                        <td>{{ reppago.nombre }}</td>
+                        <td>{{ reppago.cantidad }}</td>
+                        <td>{{ reppago.subtotal }}</td>
+                        <!-- <td>{{ reppago.monto }}</td>
+                        <td>{{ reppago.monto }}</td> -->
+                        <!-- <td>0</td> -->
+                    </tr>
+                </tbody>
+              </table>
+  
+          </div>
+  
+        </div>
+        <div class="dataTables_wrapper">
+          <!-- <div class="dataTables_info" id="example23_info" role="status" aria-live="polite">
+            Total Pagos Bs.: {{ totalDiscountedPrice }}
+          </div> -->
+          <div class="dataTables_paginate paging_simple_numbers">
+            <button (click)="cambiarPagina(-20)" class="btn btn-secondary">Anterior</button>
+            &nbsp;
+            <button (click)="cambiarPagina(20)" class="btn btn-secondary">Siguiente</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
