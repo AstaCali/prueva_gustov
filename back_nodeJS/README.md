@@ -13,3 +13,4 @@ ejecutar ```npm install -g nodemon``` para reiniciar automáticamente tu servido
 # Levantar el servidor
 
 ejecutar ```nodemon app``` para levantar el servidor.
+
