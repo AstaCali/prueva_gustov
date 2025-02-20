@@ -1,10 +1,10 @@
-# ingresar cmd froneted
-cd frontend
-# Instalar Paquetes
+# ----Frotend-----
+
+# Instalar Paquetes en la terminal
 
 Recuerden que deben de ejecutar ```npm install``` para reconstruir los módulos de Node.
 
-# Levantar el servidor 
+# Levantar el servidor frotend
 
 ejecutar ```ng serve ``` o ```ng serve -o ``` para levantar el servidor de Angular.
 
